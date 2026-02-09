@@ -29,6 +29,7 @@
             width: 100%;
             max-width: 1200px;
             height: 90vh;
+            min-height: 600px;
             perspective: 2000px;
             position: relative;
             display: flex;
@@ -71,6 +72,7 @@
             z-index: 10;
             border-radius: 10px 0 0 10px;
             box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.5);
+            overflow: visible !important;
         }
         
         /* Contenido de la cubierta */
@@ -78,25 +80,29 @@
             text-align: center;
             padding: 40px;
             z-index: 2;
+            width: 100%;
+            max-width: 90%;
         }
         
         .cover-title {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
             letter-spacing: 2px;
+            line-height: 1.2;
         }
         
         .cover-subtitle {
-            font-size: 1.8rem;
-            margin-bottom: 40px;
+            font-size: 1.6rem;
+            margin-bottom: 30px;
             font-style: italic;
+            line-height: 1.4;
         }
         
         .cover-heart {
-            font-size: 5rem;
+            font-size: 4rem;
             color: rgba(255, 255, 255, 0.9);
-            margin-top: 30px;
+            margin: 30px 0;
             animation: heartbeat 1.5s infinite;
         }
         
@@ -110,16 +116,19 @@
             width: 100%;
             height: 100%;
             display: flex;
+            overflow: visible;
         }
         
         .page-left, .page-right {
             flex: 1;
-            padding: 40px;
+            padding: 30px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             position: relative;
             overflow-y: auto;
+            overflow-x: hidden;
+            min-height: 100%;
         }
         
         .page-left {
@@ -131,37 +140,49 @@
             background-color: #f9f9f9;
         }
         
+        /* Asegurar que el contenido no se corte */
+        .page-content-wrapper {
+            width: 100%;
+            height: auto;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
         /* Número de página */
         .page-number {
             position: absolute;
-            bottom: 20px;
+            bottom: 15px;
             right: 20px;
             font-size: 0.9rem;
             color: #888;
             font-style: italic;
+            z-index: 10;
         }
         
         /* Estilos de texto */
         h1 {
-            font-size: 2.8rem;
+            font-size: 2.4rem;
             color: #ff7700;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             padding-bottom: 15px;
             border-bottom: 2px solid rgba(255, 119, 0, 0.3);
+            line-height: 1.3;
         }
         
         h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: #ff5500;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 1px solid rgba(255, 85, 0, 0.2);
+            line-height: 1.3;
         }
         
         p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 25px;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
             text-align: justify;
         }
         
@@ -172,59 +193,79 @@
             font-style: italic;
             margin: 20px 0;
             border-radius: 0 5px 5px 0;
+            line-height: 1.6;
         }
         
         /* Imágenes */
         .page-image {
             width: 100%;
-            max-height: 350px;
+            max-height: 300px;
             object-fit: cover;
             border-radius: 5px;
-            margin: 20px 0;
+            margin: 15px 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #666;
+            margin-top: 8px;
+            width: 100%;
         }
         
         /* Decoraciones de página */
         .page-decoration {
             position: absolute;
-            font-size: 200px;
+            font-size: 180px;
             color: rgba(255, 119, 0, 0.05);
             z-index: 0;
             pointer-events: none;
         }
         
         .decoration-left {
-            bottom: -50px;
-            left: -50px;
+            bottom: -40px;
+            left: -40px;
         }
         
         .decoration-right {
-            top: -50px;
-            right: -50px;
+            top: -40px;
+            right: -40px;
         }
         
         /* Página de música */
         .music-section {
             width: 100%;
             height: 100%;
-            padding: 30px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
+            overflow-y: auto;
         }
         
         .music-title {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         
         .music-container {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 30px;
+            gap: 25px;
+            margin: 20px 0;
+            width: 100%;
         }
         
         .music-card {
@@ -232,14 +273,18 @@
             border-radius: 10px;
             padding: 20px;
             width: 250px;
+            max-width: 100%;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(255, 119, 0, 0.2);
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .album-cover {
-            width: 180px;
-            height: 180px;
+            width: 160px;
+            height: 160px;
             margin: 0 auto 15px;
             border-radius: 5px;
             overflow: hidden;
@@ -253,9 +298,16 @@
         }
         
         .song-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: #ff5500;
             margin-bottom: 5px;
+            line-height: 1.3;
+        }
+        
+        .song-artist {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
         }
         
         .play-btn {
@@ -267,11 +319,12 @@
             border-radius: 50%;
             font-size: 1.2rem;
             cursor: pointer;
-            margin: 15px auto;
+            margin: 10px auto;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            flex-shrink: 0;
         }
         
         .play-btn:hover {
@@ -282,6 +335,7 @@
         .audio-player {
             width: 100%;
             margin-top: 10px;
+            max-width: 100%;
         }
         
         /* Página final (contraportada) */
@@ -294,29 +348,34 @@
             z-index: 1;
             border-radius: 0 10px 10px 0;
             box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+            overflow: visible !important;
         }
         
         .back-cover-content {
             text-align: center;
             padding: 40px;
+            width: 100%;
+            max-width: 90%;
         }
         
         .signature {
-            font-size: 2.5rem;
-            margin-top: 30px;
+            font-size: 2rem;
+            margin-top: 25px;
             color: #ff7700;
+            line-height: 1.3;
         }
         
         .hearts {
-            font-size: 3rem;
-            margin-top: 20px;
-            letter-spacing: 15px;
+            font-size: 2.5rem;
+            margin-top: 15px;
+            letter-spacing: 10px;
+            line-height: 1.5;
         }
         
         /* Controles de navegación */
         .navigation {
             position: absolute;
-            bottom: 30px;
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -328,16 +387,17 @@
             background: #ff7700;
             color: white;
             border: none;
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
+            flex-shrink: 0;
         }
         
         .nav-btn:hover {
@@ -353,16 +413,17 @@
         /* Indicador de página */
         .page-indicator {
             position: absolute;
-            top: 30px;
+            top: 25px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(255, 119, 0, 0.9);
             color: white;
             padding: 10px 20px;
             border-radius: 20px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             z-index: 100;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
         }
         
         /* Efecto de sombra en el lomo del libro */
@@ -381,7 +442,7 @@
         
         /* Animación de entrada */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
@@ -408,14 +469,36 @@
             50% { border-color: #ff7700; }
         }
         
+        /* Mejoras para scroll interno */
+        .page-left::-webkit-scrollbar,
+        .page-right::-webkit-scrollbar,
+        .music-section::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .page-left::-webkit-scrollbar-track,
+        .page-right::-webkit-scrollbar-track,
+        .music-section::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+        }
+        
+        .page-left::-webkit-scrollbar-thumb,
+        .page-right::-webkit-scrollbar-thumb,
+        .music-section::-webkit-scrollbar-thumb {
+            background: rgba(255, 119, 0, 0.3);
+            border-radius: 10px;
+        }
+        
         /* Responsive para móviles */
         @media (max-width: 1024px) {
             .book-wrapper {
-                height: 80vh;
+                height: 85vh;
+                min-height: 500px;
             }
             
             .cover-title {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             
             .cover-subtitle {
@@ -423,49 +506,180 @@
             }
             
             h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             h2 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             
             .page-left, .page-right {
-                padding: 25px;
+                padding: 20px;
+            }
+            
+            .page-image {
+                max-height: 250px;
             }
             
             .music-container {
                 flex-direction: column;
                 align-items: center;
+                gap: 20px;
             }
             
             .music-card {
                 width: 100%;
-                max-width: 300px;
+                max-width: 280px;
+            }
+            
+            .hearts {
+                font-size: 2rem;
+                letter-spacing: 8px;
             }
         }
         
         @media (max-width: 768px) {
             body {
-                padding: 10px;
+                padding: 15px;
             }
             
             .book-wrapper {
-                height: 70vh;
+                height: 80vh;
+                min-height: 450px;
+            }
+            
+            .cover-title {
+                font-size: 2.2rem;
+            }
+            
+            .cover-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .cover-heart {
+                font-size: 3rem;
+                margin: 20px 0;
             }
             
             .page-left, .page-right {
                 padding: 15px;
-                overflow-y: auto;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+            }
+            
+            p {
+                font-size: 1.05rem;
+                line-height: 1.6;
+                margin-bottom: 15px;
+            }
+            
+            .highlight {
+                padding: 12px;
+                margin: 15px 0;
+            }
+            
+            .page-image {
+                max-height: 200px;
             }
             
             .navigation {
-                bottom: 20px;
+                bottom: 15px;
             }
             
             .nav-btn {
                 width: 50px;
                 height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .page-indicator {
+                top: 15px;
+                font-size: 1rem;
+                padding: 8px 15px;
+            }
+            
+            .music-section {
+                padding: 15px;
+            }
+            
+            .album-cover {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .signature {
+                font-size: 1.6rem;
+            }
+            
+            .hearts {
+                font-size: 1.8rem;
+                letter-spacing: 6px;
+                margin-top: 10px;
+            }
+            
+            .page-decoration {
+                font-size: 140px;
+            }
+            
+            .decoration-left {
+                bottom: -30px;
+                left: -30px;
+            }
+            
+            .decoration-right {
+                top: -30px;
+                right: -30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .book-wrapper {
+                height: 75vh;
+                min-height: 400px;
+            }
+            
+            .cover-title {
+                font-size: 1.8rem;
+            }
+            
+            .cover-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .page-inner {
+                flex-direction: column;
+            }
+            
+            .page-left, .page-right {
+                min-height: 50%;
+                max-height: 50%;
+                padding: 15px;
+            }
+            
+            .page-left {
+                border-right: none;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            }
+            
+            .music-card {
+                padding: 15px;
+            }
+            
+            .album-cover {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .song-title {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -482,7 +696,7 @@
                     <div class="cover-heart">
                         <i class="fas fa-heart"></i>
                     </div>
-                    <p class="page-number">Toca para abrir</p>
+                    <p style="margin-top: 20px; font-style: italic;">Toca para abrir</p>
                 </div>
             </div>
             
@@ -490,18 +704,22 @@
             <div class="page" id="page1">
                 <div class="page-inner">
                     <div class="page-left">
-                        <i class="fas fa-heart page-decoration decoration-left"></i>
-                        <h1 class="fade-in">Feliz 8 Meses</h1>
-                        <p class="fade-in">Mi reina hermosa, preciosa, divina, resplandeciente, espectacular de mi vida, gracias por compartir conmigo estos meses tan importantes de toda mi vida.</p>
-                        <p class="fade-in">Sé que he sido un idiota últimamente y sé los muchos errores que he cometido por causa de mis miedos e inseguridades, pero quisiera que me acompañes todavía a aprender más de ti y de mí.</p>
-                        <div class="highlight fade-in">
-                            Eres la persona más especial que ha llegado a mi vida, y cada día a tu lado es un regalo que atesoro profundamente.
+                        <div class="page-content-wrapper">
+                            <i class="fas fa-heart page-decoration decoration-left"></i>
+                            <h1 class="fade-in">Feliz 8 Meses</h1>
+                            <p class="fade-in">Mi reina hermosa, preciosa, divina, resplandeciente, espectacular de mi vida, gracias por compartir conmigo estos meses tan importantes de toda mi vida.</p>
+                            <p class="fade-in">Sé que he sido un idiota últimamente y sé los muchos errores que he cometido por causa de mis miedos e inseguridades, pero quisiera que me acompañes todavía a aprender más de ti y de mí.</p>
+                            <div class="highlight fade-in">
+                                Eres la persona más especial que ha llegado a mi vida, y cada día a tu lado es un regalo que atesoro profundamente.
+                            </div>
                         </div>
                     </div>
                     <div class="page-right">
-                        <div class="image-container fade-in">
-                            <img src="Em.JPG" alt="Pareja feliz" class="page-image">
-                            <p class="image-caption" style="text-align: center; font-style: italic; margin-top: 10px;">Cada momento contigo es especial</p>
+                        <div class="page-content-wrapper">
+                            <div class="image-container fade-in">
+                                <img src="Em.JPG" alt="Pareja feliz" class="page-image">
+                                <p class="image-caption">Cada momento contigo es especial</p>
+                            </div>
                         </div>
                     </div>
                     <div class="page-number">1</div>
@@ -512,17 +730,21 @@
             <div class="page" id="page2">
                 <div class="page-inner">
                     <div class="page-left">
-                        <div class="image-container fade-in">
-                            <img src="En.JPG" alt="Atardecer romántico" class="page-image">
-                            <p class="image-caption" style="text-align: center; font-style: italic; margin-top: 10px;">Nuestros momentos juntos</p>
+                        <div class="page-content-wrapper">
+                            <div class="image-container fade-in">
+                                <img src="En.JPG" alt="Atardecer romántico" class="page-image">
+                                <p class="image-caption">Nuestros momentos juntos</p>
+                            </div>
                         </div>
                     </div>
                     <div class="page-right">
-                        <i class="fas fa-heart page-decoration decoration-right"></i>
-                        <h2 class="fade-in">Mi Vida Contigo</h2>
-                        <p class="fade-in">Mi vida sin ti es aburrida y monótona, pero pienso en ti y hace que mi emoción por hacer cosas nuevas y aprender cosas nuevas sea fuerte porque quiero enseñarte un montón de cosas para que veas lo bonito que es la vida.</p>
-                        <p class="fade-in">Quiero que entiendas que a pesar de que somos diferentes y a veces somos iguales, y que la vida nos trató como una mierda, veas lo bonito que hay en esta vida que estamos teniendo tú y yo.</p>
-                        <p class="fade-in">Contigo he descubierto que el amor verdadero existe, y que juntos podemos superar cualquier obstáculo que se nos presente en el camino.</p>
+                        <div class="page-content-wrapper">
+                            <i class="fas fa-heart page-decoration decoration-right"></i>
+                            <h2 class="fade-in">Mi Vida Contigo</h2>
+                            <p class="fade-in">Mi vida sin ti es aburrida y monótona, pero pienso en ti y hace que mi emoción por hacer cosas nuevas y aprender cosas nuevas sea fuerte porque quiero enseñarte un montón de cosas para que veas lo bonito que es la vida.</p>
+                            <p class="fade-in">Quiero que entiendas que a pesar de que somos diferentes y a veces somos iguales, y que la vida nos trató como una mierda, veas lo bonito que hay en esta vida que estamos teniendo tú y yo.</p>
+                            <p class="fade-in">Contigo he descubierto que el amor verdadero existe, y que juntos podemos superar cualquier obstáculo que se nos presente en el camino.</p>
+                        </div>
                     </div>
                     <div class="page-number">2</div>
                 </div>
@@ -532,19 +754,23 @@
             <div class="page" id="page3">
                 <div class="page-inner">
                     <div class="page-left">
-                        <i class="fas fa-heart page-decoration decoration-left"></i>
-                        <h2 class="fade-in">Nuestro Reencuentro</h2>
-                        <p class="fade-in">Espero que el día que nos veamos de nuevo sea el mejor día de nuestras vidas como la primera vez que nos vimos.</p>
-                        <p class="fade-in">No importa lo que pasó ese día, siempre lo recuerdo como lo más bonito que me pasó en mi vida.</p>
-                        <div class="highlight fade-in">
-                            Cada momento a tu lado es un tesoro que guardo en lo más profundo de mi corazón. Cada risa, cada conversación, cada mirada... todo queda grabado en mi memoria como lo más valioso que poseo.
+                        <div class="page-content-wrapper">
+                            <i class="fas fa-heart page-decoration decoration-left"></i>
+                            <h2 class="fade-in">Nuestro Reencuentro</h2>
+                            <p class="fade-in">Espero que el día que nos veamos de nuevo sea el mejor día de nuestras vidas como la primera vez que nos vimos.</p>
+                            <p class="fade-in">No importa lo que pasó ese día, siempre lo recuerdo como lo más bonito que me pasó en mi vida.</p>
+                            <div class="highlight fade-in">
+                                Cada momento a tu lado es un tesoro que guardo en lo más profundo de mi corazón. Cada risa, cada conversación, cada mirada... todo queda grabado en mi memoria como lo más valioso que poseo.
+                            </div>
+                            <p class="fade-in">Aunque la distancia nos separe físicamente, en mi corazón siempre estás cerca, y cada día que pasa mi amor por ti crece más y más.</p>
                         </div>
-                        <p class="fade-in">Aunque la distancia nos separe físicamente, en mi corazón siempre estás cerca, y cada día que pasa mi amor por ti crece más y más.</p>
                     </div>
                     <div class="page-right">
-                        <div class="image-container fade-in">
-                            <img src="L.JPG" alt="Corazones y luces" class="page-image">
-                            <p class="image-caption" style="text-align: center; font-style: italic; margin-top: 10px;">Nuestro amor brilla como las estrellas</p>
+                        <div class="page-content-wrapper">
+                            <div class="image-container fade-in">
+                                <img src="L.JPG" alt="Corazones y luces" class="page-image">
+                                <p class="image-caption">Nuestro amor brilla como las estrellas</p>
+                            </div>
                         </div>
                     </div>
                     <div class="page-number">3</div>
@@ -558,16 +784,16 @@
                         <i class="fas fa-heart page-decoration decoration-left"></i>
                         <i class="fas fa-heart page-decoration decoration-right"></i>
                         <h2 class="music-title fade-in">Nuestra Banda Sonora</h2>
-                        <p class="fade-in" style="text-align: center; margin-bottom: 40px; font-size: 1.2rem;">Canciones que nos recuerdan a nosotros y a estos 8 meses increíbles</p>
+                        <p class="fade-in" style="text-align: center; margin-bottom: 25px;">Canciones que nos recuerdan a nosotros y a estos 8 meses increíbles</p>
                         
                         <div class="music-container">
                             <!-- Canción 1 -->
                             <div class="music-card fade-in">
                                 <div class="album-cover">
-                                    <img src="https://share.google/images/ZGI3KfPZb6Z5AnCgR" alt="Portada canción 1">
+                                    <img src="https://share.google/images/ZGI3KfPZb6Z5AnCgR" alt="Portada canción 1" onerror="this.src='https://via.placeholder.com/160x160/ff7700/ffffff?text=Álbum'">
                                 </div>
                                 <h3 class="song-title">Nuestro Universo</h3>
-                                <p class="song-artist" style="color: #666; margin-bottom: 15px;">Dedicado a Diliana</p>
+                                <p class="song-artist">Dedicado a Diliana</p>
                                 <button class="play-btn" id="playBtn1">
                                     <i class="fas fa-play"></i>
                                 </button>
@@ -580,10 +806,10 @@
                             <!-- Canción 2 -->
                             <div class="music-card fade-in">
                                 <div class="album-cover">
-                                    <img src="https://share.google/images/VTowEF71FvoHYpstM" alt="Portada canción 2">
+                                    <img src="https://share.google/images/VTowEF71FvoHYpstM" alt="Portada canción 2" onerror="this.src='https://via.placeholder.com/160x160/ff5500/ffffff?text=Álbum'">
                                 </div>
                                 <h3 class="song-title">8 Meses Contigo</h3>
-                                <p class="song-artist" style="color: #666; margin-bottom: 15px;">Nuestra Canción</p>
+                                <p class="song-artist">Nuestra Canción</p>
                                 <button class="play-btn" id="playBtn2">
                                     <i class="fas fa-play"></i>
                                 </button>
@@ -594,11 +820,11 @@
                             </div>
                         </div>
                         
-                        <div class="signature fade-in" style="margin-top: 40px;">
+                        <div class="signature fade-in" style="margin-top: 30px;">
                             <p>Estas canciones son para ti, mi amor</p>
                             <div class="hearts">❤️❤️❤️❤️</div>
                         </div>
-                        <div class="page-number" style="color: #888;">4</div>
+                        <div class="page-number">4</div>
                     </div>
                 </div>
             </div>
@@ -607,25 +833,29 @@
             <div class="page" id="page5">
                 <div class="page-inner">
                     <div class="page-left">
-                        <div class="image-container fade-in">
-                            <img src="Em.JPG" alt="Pareja feliz" class="page-image">
-                            <p class="image-caption" style="text-align: center; font-style: italic; margin-top: 10px;">Nuestra historia de amor</p>
+                        <div class="page-content-wrapper">
+                            <div class="image-container fade-in">
+                                <img src="Em.JPG" alt="Pareja feliz" class="page-image" onerror="this.src='https://via.placeholder.com/400x300/ff7700/ffffff?text=Nuestro+Amor'">
+                                <p class="image-caption">Nuestra historia de amor</p>
+                            </div>
                         </div>
                     </div>
                     <div class="page-right">
-                        <i class="fas fa-heart page-decoration decoration-right"></i>
-                        <h1 class="fade-in" style="color: #ff7700;">Te Amo, Diliana</h1>
-                        <p class="fade-in">Con todo mi ser, de verdad. Cada día a tu lado es un regalo que atesoro con todo mi corazón.</p>
-                        <p class="fade-in">Estos 8 meses han sido los más especiales de mi vida, llenos de aprendizajes, risas, momentos inolvidables y, sobre todo, mucho amor.</p>
-                        <p class="fade-in">Prometo seguir creciendo a tu lado, aprendiendo de mis errores y construyendo un futuro donde podamos seguir compartiendo lo bonito de la vida juntos.</p>
-                        
-                        <div class="highlight fade-in" style="margin-top: 30px;">
-                            No importa lo que pase, siempre recuerda que te amo más de lo que las palabras pueden expresar.
-                        </div>
-                        
-                        <div class="signature fade-in" style="margin-top: 40px;">
-                            <p>Para siempre tuya</p>
-                            <div class="hearts">💖💖💖💖</div>
+                        <div class="page-content-wrapper">
+                            <i class="fas fa-heart page-decoration decoration-right"></i>
+                            <h1 class="fade-in" style="color: #ff7700;">Te Amo, Diliana</h1>
+                            <p class="fade-in">Con todo mi ser, de verdad. Cada día a tu lado es un regalo que atesoro con todo mi corazón.</p>
+                            <p class="fade-in">Estos 8 meses han sido los más especiales de mi vida, llenos de aprendizajes, risas, momentos inolvidables y, sobre todo, mucho amor.</p>
+                            <p class="fade-in">Prometo seguir creciendo a tu lado, aprendiendo de mis errores y construyendo un futuro donde podamos seguir compartiendo lo bonito de la vida juntos.</p>
+                            
+                            <div class="highlight fade-in" style="margin-top: 25px;">
+                                No importa lo que pase, siempre recuerda que te amo más de lo que las palabras pueden expresar.
+                            </div>
+                            
+                            <div class="signature fade-in" style="margin-top: 30px;">
+                                <p>Para siempre tuya</p>
+                                <div class="hearts">💖💖💖💖</div>
+                            </div>
                         </div>
                     </div>
                     <div class="page-number">5</div>
@@ -635,11 +865,11 @@
             <!-- Contraportada -->
             <div class="page back-cover" id="back-cover">
                 <div class="back-cover-content">
-                    <h2 style="color: #ff7700; margin-bottom: 30px;">Nuestra Historia Continúa...</h2>
-                    <p style="margin-bottom: 20px; font-size: 1.2rem;">Este es solo el comienzo de nuestro viaje juntos.</p>
-                    <p style="margin-bottom: 40px; font-size: 1.2rem;">Que los próximos meses y años nos traigan más amor, risas y momentos inolvidables.</p>
+                    <h2 style="color: #ff7700; margin-bottom: 25px;">Nuestra Historia Continúa...</h2>
+                    <p style="margin-bottom: 20px;">Este es solo el comienzo de nuestro viaje juntos.</p>
+                    <p style="margin-bottom: 30px;">Que los próximos meses y años nos traigan más amor, risas y momentos inolvidables.</p>
                     <div class="hearts" style="color: #ff7700;">💕💕💕💕</div>
-                    <p style="margin-top: 40px; font-style: italic;">Con todo mi amor, para Diliana</p>
+                    <p style="margin-top: 30px; font-style: italic;">Con todo mi amor, para Diliana</p>
                 </div>
             </div>
         </div>
@@ -696,6 +926,13 @@
                 
                 // La contraportada está al fondo
                 pages[totalPages - 1].style.zIndex = 1;
+                
+                // Asegurar que todas las páginas tengan overflow visible al inicio
+                pages.forEach(page => {
+                    page.style.overflow = 'hidden';
+                });
+                pages[0].style.overflow = 'visible';
+                pages[totalPages - 1].style.overflow = 'visible';
             }
             
             // Abrir el libro
@@ -715,12 +952,12 @@
                 currentPage = 1;
                 updateNavigation();
                 
-                // Ocultar el indicador temporalmente
-                pageIndicator.style.opacity = '0';
-                setTimeout(() => {
-                    pageIndicator.style.opacity = '1';
-                    pageIndicator.style.transition = 'opacity 0.5s';
-                }, 1000);
+                // Mostrar el indicador
+                pageIndicator.style.opacity = '1';
+                pageIndicator.style.transition = 'opacity 0.5s';
+                
+                // Animar elementos de la primera página
+                animatePageElements();
             }
             
             // Cambiar de página
@@ -946,13 +1183,6 @@
             setupBook();
             updateNavigation();
             
-            // Efecto de escritura para la cubierta
-            const typewriterElement = document.querySelector('.typewriter');
-            if (typewriterElement) {
-                // El efecto CSS ya maneja la animación
-                // Solo necesitamos reiniciarla al abrir/cerrar el libro
-            }
-            
             // Permitir navegación por clic en los bordes de la página
             document.querySelector('.book-wrapper').addEventListener('click', (e) => {
                 if (!isBookOpen) return;
@@ -973,6 +1203,15 @@
                         closeBook();
                     }
                 }
+            });
+            
+            // Asegurar que las imágenes se carguen correctamente
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    // Si la imagen no se carga, mostrar un placeholder
+                    this.src = 'https://via.placeholder.com/400x300/ff7700/ffffff?text=Amor';
+                });
             });
         });
     </script>
